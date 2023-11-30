@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        getComputerChoice = () => {
+            const choices = ['rock', 'paper', 'scissors'];
+            const randomNumber = Math.floor(Math.random() * 3);
+            return choices[randomNumber];
+        }
+
+        singleRound = (playerSelection, computerSelection) => {
+            if (playerSelection === computerSelection) {
+                return 'Draw!';
+            } else if (
+                (playerSelection === 'rock' && computerSelection === 'scissors') ||
+                (playerSelection === 'paper' && computerSelection === 'rock') ||
+                (playerSelection === 'scissors' && computerSelection === 'paper')
+            ) {
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            } else {
+                return `You lose! ${computerSelection} beats ${playerSelection}`;
+            }
+        }
+
+        game = () => {
+            let playerScore = 0;
+            let computerScore = 0;
+
+            for (let round = 1; round <= 5; round++) {
+                let playerSelection;
+                // Keep prompting until a valid input is provided
+                do {
+                    playerSelection = prompt(`Round ${round}: rock, paper, or scissors?`).toLowerCase();
+
+                    if (!['rock', 'paper', 'scissors'].includes(playerSelection)) {
+                        alert('Invalid input. Please enter rock, paper, or scissors.');
+                    }
+
+                } while (!['rock', 'paper', 'scissors'].includes(playerSelection));
+
+            const computerSelection = getComputerChoice();
+            const result = singleRound(playerSelection, computerSelection);
+            console.log(result);
+
+                if (result.includes('You win')) {
+                    playerScore++;
+                } else if (result.includes('You lose!')) {
+                    computerScore++;
+                }
+            }
+
+            if (playerScore > computerScore) {
+                return 'You win!';
+            } else if (playerScore < computerScore) {
+                return 'You lose!';
+            } else {
+                return 'Draw!';
+            }
+        }
+
+        game();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
