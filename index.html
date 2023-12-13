@@ -72,22 +72,6 @@
       }
     }
 
-    function resetGame() {
-      playerScore = 0;
-      computerScore = 0;
-
-      const resultDiv = document.getElementById("result");
-      resultDiv.textContent = "";
-
-      const scoreDiv = document.getElementById("score");
-      scoreDiv.textContent = "Score: Player 0 - Computer 0";
-
-      // Enable buttons after game reset
-      document.getElementById("rock").disabled = false;
-      document.getElementById("paper").disabled = false;
-      document.getElementById("scissors").disabled = false;
-    }
-
     function handleClick(event) {
       const playerSelection = event.target.id;
       const computerSelection = computerPlay();
